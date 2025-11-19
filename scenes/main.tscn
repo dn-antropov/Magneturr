@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnxdrhwds65mb"]
+[gd_scene load_steps=4 format=3 uid="uid://cnxdrhwds65mb"]
 
 [ext_resource type="PackedScene" uid="uid://uf0ckjtbexrc" path="res://turret/turret.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bpce2ojod6lau" path="res://objects/foes/mine/mine.tscn" id="2_0wfyh"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sugp2"]
+a = Vector2(-69, 0)
+b = Vector2(69, 0)
 
 [node name="Main" type="Node2D"]
 
@@ -10,3 +14,11 @@ position = Vector2(960, 120)
 
 [node name="Mine" parent="." instance=ExtResource("2_0wfyh")]
 position = Vector2(125, 125)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(960, 1080)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+rotation = 3.1415925
+scale = Vector2(14, 14)
+shape = SubResource("SegmentShape2D_sugp2")
