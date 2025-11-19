@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://uf0ckjtbexrc"]
+
+[ext_resource type="Texture2D" uid="uid://bviy2a4e13ast" path="res://turret/textures/magnet.png" id="1_vfthy"]
+[ext_resource type="Script" uid="uid://baad7q3rplupv" path="res://turret/scripts/turret.gd" id="2_2876l"]
+[ext_resource type="Script" uid="uid://busd3yfk5p1mx" path="res://addons/godot-rapier2d/custom_nodes/rapier_static_body_2d.gd" id="3_1p48p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2876l"]
+
+[node name="Turret" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_vfthy")
+script = ExtResource("2_2876l")
+
+[node name="RapierStaticBody2D" type="StaticBody2D" parent="."]
+script = ExtResource("3_1p48p")
+metadata/_custom_type_script = "uid://busd3yfk5p1mx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RapierStaticBody2D"]
+scale = Vector2(36, 36)
+shape = SubResource("CircleShape2D_2876l")
