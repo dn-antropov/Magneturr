@@ -11,8 +11,8 @@ bounce = 3.0
 [node name="Mine" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_rcf20")
 script = ExtResource("1_msem1")
-object_density = 1050.0
-drag_coefficient = 0.5
+object_density = 0.99
+drag_coefficient = 10.0
 metadata/_custom_type_script = "uid://unwhnooi7g2c"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
