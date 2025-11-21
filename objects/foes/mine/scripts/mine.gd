@@ -29,19 +29,15 @@ func apply_water_drag() -> void:
 		var drag = -velocity.normalized() * drag_coefficient * speed * speed
 		apply_force(drag)
 
-	var angular_drag = -angular_velocity * drag_coefficient * 5.0
+	var angular_drag = -angular_velocity * drag_coefficient
 	apply_torque(angular_drag)
 
 func get_volume() -> float:
 	for child in get_children():
 		if child is CollisionShape2D:
-			var shape = child.shape
+			var shape: Shape2D = child.shape
 			if shape is CircleShape2D:
-				return PI * shape.radius * shape.radius
+				return PI * shape.radius * child.scale.x * shape.radius * child.scale.y
 			elif shape is RectangleShape2D:
-				return shape.size.x * shape.size.y
-			elif shape is CapsuleShape2D:
-				var radius = shape.radius
-				var height = shape.height
-				return PI * radius * radius + (height - radius * 2) * radius * 2
+				return shape.size.x * child.scale.x * shape.size.y * child.scale.y
 	return 1.0
