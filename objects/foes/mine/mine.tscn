@@ -7,8 +7,9 @@
 bounce = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rcf20"]
+radius = 64.0
 
-[node name="Mine" type="RigidBody2D"]
+[node name="Mine" type="RigidBody2D" groups=["affectable"]]
 physics_material_override = SubResource("PhysicsMaterial_rcf20")
 script = ExtResource("1_msem1")
 object_density = 0.505
@@ -16,7 +17,6 @@ drag_coefficient = 1.0
 metadata/_custom_type_script = "uid://unwhnooi7g2c"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(6.4, 6.4)
 shape = SubResource("CircleShape2D_rcf20")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -31,13 +31,9 @@ func _physics_process(_delta: float) -> void:
 	if not collision_shape or not rect_shape:
 		return
 	
-	var mouse_pos = get_global_mouse_position()
-	var max_distance = rect_shape.size.x * collision_shape.scale.x  # Length from shape
-	var distance = min(global_position.distance_to(mouse_pos), max_distance)
-	
 	var bodies = get_overlapping_bodies()
 	for body in bodies:
-		if body is RapierRigidBody2D:
+		if body is RapierRigidBody2D and body.is_in_group("affectable"):
 			if(state != State.off):
 				apply_magnetic_force(body)
 
@@ -63,9 +59,9 @@ func _draw() -> void:
 	if not collision_shape or not rect_shape:
 		return
 	
-	var rect: Rect2 = Rect2(-rect_shape.size * collision_shape.scale, rect_shape.size * collision_shape.scale)
+	var rect: Rect2 = Rect2(-rect_shape.size, rect_shape.size)
 	
-	var rect_transform: Transform2D = Transform2D(collision_shape.rotation, collision_shape.position + rect_shape.size * collision_shape.scale / 2)
+	var rect_transform: Transform2D = Transform2D(collision_shape.rotation, collision_shape.position + rect_shape.size / 2)
 	draw_set_transform(rect_transform.origin, rect_transform.get_rotation(), rect_transform.get_scale())
 	draw_rect(rect, Color(1, 0.2, 0.2, 0.3), true)
 	draw_rect(rect, Color(1, 0, 0, 0.8), false, 2.0)

@@ -5,17 +5,18 @@
 [ext_resource type="Script" uid="uid://di31dfprf1jg3" path="res://turret/scripts/beam.gd" id="3_1p48p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2876l"]
+radius = 162.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1p48p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2876l"]
+size = Vector2(250, 1920)
 
 [node name="Turret" type="StaticBody2D"]
 script = ExtResource("2_2876l")
 metadata/_custom_type_script = "uid://busd3yfk5p1mx"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(17, 17)
 shape = SubResource("CircleShape2D_2876l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -30,6 +31,5 @@ draw_debug = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Beam"]
 material = SubResource("CanvasItemMaterial_1p48p")
-position = Vector2(0, -1000)
-scale = Vector2(12, 100)
+position = Vector2(0, -960)
 shape = SubResource("RectangleShape2D_2876l")

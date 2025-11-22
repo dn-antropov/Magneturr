@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[global_group]
+
+affectable="Everything that is supposed to be affected by magnetic turret"
+
 [input]
 
 pull={
