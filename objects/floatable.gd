@@ -41,4 +41,6 @@ func get_volume() -> float:
 				return PI * shape.radius * shape.radius
 			elif shape is RectangleShape2D:
 				return shape.size.x * shape.size.y
+			elif shape is CapsuleShape2D:
+				return shape.radius * shape.height + shape.radius * shape.radius
 	return 1.0

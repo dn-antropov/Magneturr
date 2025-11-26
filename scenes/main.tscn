@@ -22,6 +22,12 @@ position = Vector2(1795, 125)
 [node name="Fish" parent="." instance=ExtResource("3_sugp2")]
 position = Vector2(960, 540)
 
+[node name="Fish2" parent="." instance=ExtResource("3_sugp2")]
+position = Vector2(700, 540)
+
+[node name="Fish3" parent="." instance=ExtResource("3_sugp2")]
+position = Vector2(1200, 540)
+
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(960, 1080)
 

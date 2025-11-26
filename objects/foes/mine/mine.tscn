@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpce2ojod6lau"]
+[gd_scene load_steps=6 format=3 uid="uid://bpce2ojod6lau"]
 
 [ext_resource type="Script" uid="uid://dq3metuo8g8m4" path="res://objects/foes/mine/scripts/mine.gd" id="1_msem1"]
 [ext_resource type="Texture2D" uid="uid://c8meu6efdbcck" path="res://objects/foes/mine/textures/mine.png" id="1_rcf20"]
+[ext_resource type="Script" uid="uid://clf6gkb7he3ev" path="res://objects/foes/components/harm.gd" id="3_msem1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rcf20"]
 bounce = 3.0
@@ -22,3 +23,6 @@ shape = SubResource("CircleShape2D_rcf20")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_rcf20")
+
+[node name="Harm" type="Node" parent="."]
+script = ExtResource("3_msem1")

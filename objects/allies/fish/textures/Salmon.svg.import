@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l2eulapc2ac0"
-path="res://.godot/imported/puffer.png-409b9395eaf42a50dd6e59d43ae52fb2.ctex"
+uid="uid://hles8mti7riu"
+path="res://.godot/imported/Salmon.svg-a471a72cb777769156772ff20b699cf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/allies/fish/textures/puffer.png"
-dest_files=["res://.godot/imported/puffer.png-409b9395eaf42a50dd6e59d43ae52fb2.ctex"]
+source_file="res://objects/allies/fish/textures/Salmon.svg"
+dest_files=["res://.godot/imported/Salmon.svg-a471a72cb777769156772ff20b699cf5.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

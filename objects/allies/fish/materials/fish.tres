@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://fb316m40alg0"]
+
+[ext_resource type="Shader" uid="uid://bhigh7f74qo2r" path="res://objects/allies/fish/materials/fish.gdshader" id="1_52qek"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_52qek")
+shader_parameter/color = Vector3(0, 1, 1)
+shader_parameter/suffering_color = Vector3(1, 0, 0)
+shader_parameter/suffering_ammount = 0.0
