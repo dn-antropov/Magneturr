@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://daou6n2ipaet3"]
+
+[ext_resource type="Script" uid="uid://bbk3s50o5tgwk" path="res://objects/foes/explosion/scripts/explosion.gd" id="1_1ok5w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fxjwp"]
+
+[node name="Explosion" type="Area2D" node_paths=PackedStringArray("collision_shape")]
+script = ExtResource("1_1ok5w")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fxjwp")
