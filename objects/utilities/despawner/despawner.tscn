@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0yi2q1t45u0v"]
+
+[ext_resource type="Script" uid="uid://jcfbrkmi0cmo" path="res://objects/utilities/despawner/scripts/despawner.gd" id="1_gnm7y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ow4a7"]
+
+[node name="Despawner" type="Area2D"]
+monitorable = false
+script = ExtResource("1_gnm7y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ow4a7")

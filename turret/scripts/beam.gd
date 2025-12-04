@@ -10,6 +10,8 @@ var rect_shape: RectangleShape2D
 enum State {off, pull, push}
 var state: State = State.off
 
+var center: Vector2
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pull"):
 		state = State.pull
@@ -21,6 +23,7 @@ func _input(event: InputEvent) -> void:
 		state = State.off
 		
 func _ready() -> void:
+	center = global_position
 	collision_shape = get_node("CollisionShape2D")
 	if collision_shape and collision_shape.shape is RectangleShape2D:
 		rect_shape = collision_shape.shape
@@ -38,7 +41,7 @@ func _physics_process(_delta: float) -> void:
 				apply_magnetic_force(body)
 
 func apply_magnetic_force(body: RapierRigidBody2D) -> void:
-	var to_magnet = global_position - body.global_position
+	var to_magnet = center - body.global_position
 	if (state == State.push):
 		to_magnet *= -1.0
 	
@@ -52,7 +55,8 @@ func apply_magnetic_force(body: RapierRigidBody2D) -> void:
 		
 		var force = to_magnet.normalized() * force_magnitude
 		body.apply_force(force)
-
+		
+		#var middle_dir = global_transform.basis_xform(Vector2.UP)
 func _draw() -> void:
 	if not draw_debug:
 		return
@@ -63,5 +67,7 @@ func _draw() -> void:
 	
 	var rect_transform: Transform2D = Transform2D(collision_shape.rotation, collision_shape.position + rect_shape.size / 2)
 	draw_set_transform(rect_transform.origin, rect_transform.get_rotation(), rect_transform.get_scale())
-	draw_rect(rect, Color(1, 0.2, 0.2, 0.3), true)
+	# draw_rect(rect, Color(1, 0.2, 0.2, 0.3), true)
 	draw_rect(rect, Color(1, 0, 0, 0.8), false, 2.0)
+	
+

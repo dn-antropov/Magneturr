@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgsu6g3p5buwq"]
+
+[ext_resource type="Script" uid="uid://j5ptec1qlot6" path="res://objects/utilities/spawner/scripts/spawner.gd" id="1_30rwn"]
+[ext_resource type="PackedScene" uid="uid://bpce2ojod6lau" path="res://objects/foes/mine/mine.tscn" id="2_hbsk1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ow4a7"]
+size = Vector2(1, 1)
+
+[node name="Spawner" type="Area2D" node_paths=PackedStringArray("collision")]
+script = ExtResource("1_30rwn")
+_mine = ExtResource("2_hbsk1")
+collision = NodePath("CollisionShape2D")
+spawnAreaSize = Vector2i(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ow4a7")
