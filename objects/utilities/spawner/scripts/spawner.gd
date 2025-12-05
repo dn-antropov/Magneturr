@@ -13,7 +13,6 @@ class_name Spawner
 
 func _ready() -> void:
 	collision.shape.size = spawnAreaSize
-	print(collision.shape.size)
 
 func spawn_mine() -> void:
 	var mine = _mine.instantiate()
@@ -22,5 +21,3 @@ func spawn_mine() -> void:
 												self.global_position.x + collision.shape.size.x / 2),
 									randf_range(self.global_position.y - collision.shape.size.y/ 2,
 												self.global_position.y + collision.shape.size.y / 2))
-	print(mine.global_position)
-	print(collision.shape.size)
