@@ -7,7 +7,7 @@ class_name Spawner
 @export var spawnAreaSize: Vector2i:
 	set(new_setting):
 		spawnAreaSize = new_setting
-		if not Engine.is_editor_hint():
+		if not is_node_ready():
 			return
 		collision.shape.size = spawnAreaSize
 
