@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://uf0ckjtbexrc"]
+[gd_scene load_steps=8 format=3 uid="uid://uf0ckjtbexrc"]
 
 [ext_resource type="Texture2D" uid="uid://bviy2a4e13ast" path="res://turret/textures/magnet.png" id="1_vfthy"]
 [ext_resource type="Script" uid="uid://baad7q3rplupv" path="res://turret/scripts/turret.gd" id="2_2876l"]
 [ext_resource type="Script" uid="uid://di31dfprf1jg3" path="res://turret/scripts/beam.gd" id="3_1p48p"]
+[ext_resource type="Texture2D" uid="uid://be0jqytnwhr3e" path="res://turret/debug/circle.png" id="4_uqrhp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2876l"]
 radius = 162.0
@@ -23,13 +24,17 @@ shape = SubResource("CircleShape2D_2876l")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_vfthy")
 
-[node name="Beam" type="Area2D" parent="."]
+[node name="Beam" type="Area2D" parent="." node_paths=PackedStringArray("debug")]
 script = ExtResource("3_1p48p")
 magnet_strength = 20000.0
 distance_falloff = true
 draw_debug = true
+debug = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Beam"]
 material = SubResource("CanvasItemMaterial_1p48p")
 position = Vector2(0, -960)
 shape = SubResource("RectangleShape2D_2876l")
+
+[node name="Sprite2D" type="Sprite2D" parent="Beam"]
+texture = ExtResource("4_uqrhp")

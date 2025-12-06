@@ -12,6 +12,8 @@ var state: State = State.off
 
 var origin: Vector2
 
+@export var debug: Sprite2D
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pull"):
 		state = State.pull
@@ -42,27 +44,45 @@ func _physics_process(_delta: float) -> void:
 
 func apply_magnetic_force(body: RapierRigidBody2D) -> void:
 	var to_magnet: Vector2 = origin - body.global_position
-	var distance: float = to_magnet.length()
+	var distance_to_magnet: float = to_magnet.length()
 	var magnet_force: Vector2 = to_magnet.normalized()
 	
 	var center_force: Vector2 = magnet_force.slide(global_transform.basis_xform(Vector2.UP))
-	center_force *= 100000000.0
+	center_force = center_force.normalized()
 	
+	var to_magnet_inversed = to_magnet * -1.
+	var projection = to_magnet_inversed.project(global_transform.basis_xform(Vector2.UP) * 1000.)
+	
+	debug.global_position = projection + origin
+	var distance_to_center_axis = (projection + origin - body.global_position ).length()
+
 	if (state == State.push):
 		magnet_force *= -1.0
-		center_force = Vector2.ZERO
+		
+	var force_magnitude: float = magnet_strength * 500.0
 	
-	if distance > 0.1:
-		var force_magnitude: float = magnet_strength * 1000.0
-		
+	if distance_to_magnet > 0.1:
 		if distance_falloff:
-			var falloff: float = magnet_strength / (distance * distance * 0.0001)
+			var falloff: float = magnet_strength / (distance_to_magnet * distance_to_magnet * 0.0001)
 			force_magnitude = max(force_magnitude * 0.1, falloff)
-		
+
 		magnet_force = magnet_force * force_magnitude
-		body.apply_force(magnet_force + center_force)
+		body.apply_force(magnet_force)
+
+	if distance_to_center_axis > 0.1:
+		# make central force feel stronger
+		force_magnitude *= 20.
+		var max_range: float = 400.0
+		var d_clamped: float = clamp(distance_to_center_axis, 0.0, max_range)
+		var normalized_d: float = d_clamped / max_range
 		
+		var factor_a: float = pow(normalized_d, 2.0)
+		var factor_b: float = 1.0 - pow(normalized_d, 2.0)
 		
+		var center_falloff_factor: float = factor_a * factor_b 
+		var center_force_magnitude: float = force_magnitude * center_falloff_factor 
+		body.apply_force(center_force * center_force_magnitude)
+
 func _draw() -> void:
 	if not draw_debug:
 		return
@@ -76,4 +96,3 @@ func _draw() -> void:
 	draw_rect(rect, Color(1, 0.2, 0.2, 0.3), true)
 	draw_rect(rect, Color(1, 0, 0, 0.8), false, 2.0)
 	
-
