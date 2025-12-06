@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnicf631wovhh"]
+
+[ext_resource type="Texture2D" uid="uid://bevqh7lkowiyv" path="res://dome/textures/dome.svg" id="1_gyfw3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hu38"]
+radius = 159.0
+
+[node name="Dome" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2hu38")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_gyfw3")

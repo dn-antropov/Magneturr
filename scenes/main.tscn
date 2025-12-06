@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnxdrhwds65mb"]
+[gd_scene load_steps=8 format=3 uid="uid://cnxdrhwds65mb"]
 
 [ext_resource type="PackedScene" uid="uid://uf0ckjtbexrc" path="res://turret/turret.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bpce2ojod6lau" path="res://objects/foes/mine/mine.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://cc45toextd7qc" path="res://objects/allies/fish/fish.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c0yi2q1t45u0v" path="res://objects/utilities/despawner/despawner.tscn" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cgsu6g3p5buwq" path="res://objects/utilities/spawner/spawner.tscn" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://bnicf631wovhh" path="res://dome/dome.tscn" id="6_tefeu"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_sugp2"]
 a = Vector2(-69, 0)
@@ -13,7 +14,7 @@ b = Vector2(69, 0)
 [node name="Main" type="Node2D"]
 
 [node name="Turret" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(960, 120)
+position = Vector2(960, 994.97)
 
 [node name="Mine" parent="." instance=ExtResource("2_0wfyh")]
 position = Vector2(125, 125)
@@ -51,3 +52,6 @@ spawner = NodePath("../Spawner")
 [node name="Spawner" parent="." instance=ExtResource("5_tefeu")]
 position = Vector2(960, 540)
 spawnAreaSize = Vector2i(1520, 900)
+
+[node name="Dome" parent="." instance=ExtResource("6_tefeu")]
+position = Vector2(960, 1040)

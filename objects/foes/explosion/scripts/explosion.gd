@@ -5,7 +5,6 @@ extends Area2D
 @export var lifespan: int = 15
 
 func _ready() -> void:
-	print("boom")
 	collision_shape.shape.radius = explosion_size
 	
 func _draw() -> void:
