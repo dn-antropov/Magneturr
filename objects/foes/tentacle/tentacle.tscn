@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4r6yl58klpu8"]
+
+[ext_resource type="Script" uid="uid://qjicntbqvvt5" path="res://objects/foes/tentacle/scripts/tentacle.gd" id="1_an2iw"]
+[ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="1_xcemu"]
+[ext_resource type="Script" path="res://addons/curved_lines_2d/scalable_arc.gd" id="2_an2iw"]
+[ext_resource type="Script" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="3_4klui"]
+
+[sub_resource type="Curve2D" id="Curve2D_qton5"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112.444336, 188.76025, 0, 0, 0, 0, 497.22437, 284.75354, 0, 0, 0, 0, 728.7377, 590.4802)
+}
+point_count = 4
+
+[sub_resource type="Resource" id="Resource_qgq1p"]
+resource_local_to_scene = true
+script = ExtResource("3_4klui")
+
+[node name="Tentacle" type="Node2D" node_paths=PackedStringArray("vectorShape")]
+script = ExtResource("1_an2iw")
+vectorShape = NodePath("Path")
+
+[node name="Path" type="Node2D" parent="." node_paths=PackedStringArray("line", "collision_object")]
+script = ExtResource("1_xcemu")
+stroke_width = 30.0
+line = NodePath("Stroke")
+collision_object = NodePath("StaticBody2D")
+curve = SubResource("Curve2D_qton5")
+update_curve_at_runtime = true
+arc_list = SubResource("Resource_qgq1p")
+
+[node name="Stroke" type="Line2D" parent="Path"]
+points = PackedVector2Array(0, 0, 112.444336, 188.76025, 497.22437, 284.75354, 728.7377, 590.4802)
+width = 30.0
+sharp_limit = 90.0
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Path"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Path/StaticBody2D"]
+polygon = PackedVector2Array(122.13487, 175.71806, 505.98862, 271.48026, 740.69586, 581.4248, 716.7795, 599.53564, 488.46014, 298.02682, 102.75381, 201.80244, -12.88678, 7.67665, 12.88678, -7.67665)
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Path/StaticBody2D"]
+visible = false
+polygon = PackedVector2Array(155.58893, 89.15537, 176.87228, 227.76797, 152.46552, 235.56989, 127.70522, 186.39261, 127.70522, 119.68235, 130.89845, 126.02453, 129.09708, 114.29263, 127.70522, 114.0035, 127.70522, 83.36306)
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Path/StaticBody2D"]
+visible = false
+polygon = PackedVector2Array(155.58893, 89.15537, 176.88518, 227.85184, 152.26604, 235.54498, 128.26884, 186.29395, 128.26884, 117.80316, 130.26521, 121.90044, 129.09708, 114.29263, 128.26884, 114.12058, 128.26884, 83.48013)
+disabled = true
+metadata/_edit_lock_ = true
