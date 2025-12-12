@@ -1,8 +1,10 @@
+@tool
 extends Node2D
 class_name Tentacle
 
 @export var vectorShape: ScalableVectorShape2D
-
+@export var skeleton: Skeleton2D
+	
 func _process(delta: float) -> void:
 	smooth_curve_catmull_rom(vectorShape.curve, 0.1)
 	# vectorShape.curve.set_point_position(0, vectorShape.curve.get_point_position(0) + Vector2(1,1))

@@ -16,9 +16,10 @@ point_count = 4
 resource_local_to_scene = true
 script = ExtResource("3_4klui")
 
-[node name="Tentacle" type="Node2D" node_paths=PackedStringArray("vectorShape")]
+[node name="Tentacle" type="Node2D" node_paths=PackedStringArray("vectorShape", "skeleton")]
 script = ExtResource("1_an2iw")
 vectorShape = NodePath("Path")
+skeleton = NodePath("Skeleton2D")
 
 [node name="Path" type="Node2D" parent="." node_paths=PackedStringArray("line", "collision_object")]
 script = ExtResource("1_xcemu")
@@ -42,14 +43,23 @@ metadata/_edit_lock_ = true
 polygon = PackedVector2Array(122.13487, 175.71806, 505.98862, 271.48026, 740.69586, 581.4248, 716.7795, 599.53564, 488.46014, 298.02682, 102.75381, 201.80244, -12.88678, 7.67665, 12.88678, -7.67665)
 metadata/_edit_lock_ = true
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Path/StaticBody2D"]
-visible = false
-polygon = PackedVector2Array(155.58893, 89.15537, 176.87228, 227.76797, 152.46552, 235.56989, 127.70522, 186.39261, 127.70522, 119.68235, 130.89845, 126.02453, 129.09708, 114.29263, 127.70522, 114.0035, 127.70522, 83.36306)
-disabled = true
-metadata/_edit_lock_ = true
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
 
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Path/StaticBody2D"]
-visible = false
-polygon = PackedVector2Array(155.58893, 89.15537, 176.88518, 227.85184, 152.26604, 235.54498, 128.26884, 186.29395, 128.26884, 117.80316, 130.26521, 121.90044, 129.09708, 114.29263, 128.26884, 114.12058, 128.26884, 83.48013)
-disabled = true
-metadata/_edit_lock_ = true
+[node name="Root" type="Bone2D" parent="Skeleton2D"]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="Bone_01" type="Bone2D" parent="Skeleton2D/Root"]
+position = Vector2(0, 270)
+rest = Transform2D(1, 0, 0, 1, 0, 270)
+
+[node name="Bone_02" type="Bone2D" parent="Skeleton2D/Root/Bone_01"]
+position = Vector2(0, 270)
+rest = Transform2D(1, 0, 0, 1, 0, 270)
+
+[node name="Bone_03" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02"]
+position = Vector2(0, 270)
+rest = Transform2D(1, 0, 0, 1, 0, 270)
+
+[node name="Bone_04" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03"]
+position = Vector2(0, 270)
+rest = Transform2D(1, 0, 0, 1, 0, 270)
