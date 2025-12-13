@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cfye6bg8ivaxk" path="res://objects/foes/tentacle/scripts/tentacle_body.gd" id="5_4klui"]
 
 [sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_1sa78"]
-target_nodepath = NodePath("/root/@EditorNode@20438/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/Main/Node2D")
+target_nodepath = NodePath("/root/@EditorNode@20438/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/Tentacle/Target")
 fabrik_data_chain_length = 10
 joint_data/0/bone_index = 0
 joint_data/0/bone2d_node = NodePath("Root")
@@ -45,8 +45,9 @@ modifications/0 = SubResource("SkeletonModification2DFABRIK_1sa78")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sa78"]
 size = Vector2(32, 224)
 
-[node name="Tentacle" type="Node2D"]
+[node name="Tentacle" type="Node2D" node_paths=PackedStringArray("target")]
 script = ExtResource("1_an2iw")
+target = NodePath("Target")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(-16, 16)
@@ -155,92 +156,58 @@ rest = Transform2D(1, 0, 0, 1, 0, 0)
 auto_calculate_length_and_angle = false
 length = 256.0
 bone_angle = 90.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone_01" type="Bone2D" parent="Skeleton2D/Root"]
 position = Vector2(0, 256)
 rest = Transform2D(1, 0, 0, 1, 0, 256)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone_02" type="Bone2D" parent="Skeleton2D/Root/Bone_01"]
 position = Vector2(0, 256)
 rest = Transform2D(1, 0, 0, 1, 0, 256)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone_03" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02"]
-position = Vector2(0, 256)
+position = Vector2(-1.5258789e-05, 256.0005)
+scale = Vector2(0.99999803, 0.99999803)
 rest = Transform2D(1, 0, 0, 1, 0, 256)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone_04" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03"]
 position = Vector2(0, 256)
 rest = Transform2D(1, 0, 0, 1, 0, 256)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone_05" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04"]
 position = Vector2(0, 256)
 rest = Transform2D(1, 0, 0, 1, 0, 256)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone_06" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05"]
 position = Vector2(0, 255.99957)
 scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(1, 0, 0, 1, 0, 256)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone_07" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06"]
 position = Vector2(0, 255.99957)
 scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(1, 0, 0, 1, 0, 256)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone_08" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07"]
 position = Vector2(0, 255.99957)
 scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(1, 0, 0, 1, 0, 256)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone_09" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08"]
-position = Vector2(0, 256)
-scale = Vector2(0.9999999, 0.9999999)
+position = Vector2(0, 255.99567)
+rotation = 1.6949356
+scale = Vector2(0.9999985, 0.9999985)
 rest = Transform2D(1, 0, 0, 1, 0, 256)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09"]
-position = Vector2(0, -127.998535)
-scale = Vector2(1.0000005, 1.0000005)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09/StaticBody2D"]
-shape = SubResource("RectangleShape2D_1sa78")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08"]
-position = Vector2(0, -127.998535)
-scale = Vector2(1.0000004, 1.0000004)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/StaticBody2D"]
-shape = SubResource("RectangleShape2D_1sa78")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07"]
-position = Vector2(0, -127.99902)
-scale = Vector2(1.0000002, 1.0000002)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/StaticBody2D"]
-shape = SubResource("RectangleShape2D_1sa78")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06"]
-position = Vector2(0, -127.99951)
-scale = Vector2(1.0000001, 1.0000001)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/StaticBody2D"]
-shape = SubResource("RectangleShape2D_1sa78")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05"]
-position = Vector2(0, -128)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/StaticBody2D"]
-shape = SubResource("RectangleShape2D_1sa78")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04"]
-position = Vector2(0, -128)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/StaticBody2D"]
-shape = SubResource("RectangleShape2D_1sa78")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03"]
-position = Vector2(0, -128)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/StaticBody2D"]
-shape = SubResource("RectangleShape2D_1sa78")
+metadata/_local_pose_override_enabled_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01"]
 position = Vector2(0, 128)
@@ -248,11 +215,11 @@ position = Vector2(0, 128)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/StaticBody2D"]
 shape = SubResource("RectangleShape2D_1sa78")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Skeleton2D/Root"]
 position = Vector2(0, 128)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/StaticBody2D2"]
 shape = SubResource("RectangleShape2D_1sa78")
 
 [node name="Target" type="Node2D" parent="."]
-position = Vector2(0, 2454)
+position = Vector2(1780, 522)
