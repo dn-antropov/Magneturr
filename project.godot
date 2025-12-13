@@ -44,3 +44,4 @@ push={
 [rendering]
 
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0, 0.16143015, 0.24461919, 1)
