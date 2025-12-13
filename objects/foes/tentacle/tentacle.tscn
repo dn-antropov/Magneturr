@@ -1,65 +1,258 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4r6yl58klpu8"]
+[gd_scene load_steps=6 format=3 uid="uid://c4r6yl58klpu8"]
 
 [ext_resource type="Script" uid="uid://qjicntbqvvt5" path="res://objects/foes/tentacle/scripts/tentacle.gd" id="1_an2iw"]
-[ext_resource type="Script" uid="uid://de3jpss66xjfh" path="res://addons/curved_lines_2d/scalable_vector_shape_2d.gd" id="1_xcemu"]
-[ext_resource type="Script" path="res://addons/curved_lines_2d/scalable_arc.gd" id="2_an2iw"]
-[ext_resource type="Script" path="res://addons/curved_lines_2d/scalable_arc_list.gd" id="3_4klui"]
+[ext_resource type="Script" uid="uid://cfye6bg8ivaxk" path="res://objects/foes/tentacle/scripts/tentacle_body.gd" id="5_4klui"]
 
-[sub_resource type="Curve2D" id="Curve2D_qton5"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112.444336, 188.76025, 0, 0, 0, 0, 497.22437, 284.75354, 0, 0, 0, 0, 728.7377, 590.4802)
-}
-point_count = 4
+[sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_1sa78"]
+target_nodepath = NodePath("/root/@EditorNode@20438/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@62/@VBoxContainer@63/@EditorMainScreen@103/MainScreen/@CanvasItemEditor@10871/@VSplitContainer@10516/@HSplitContainer@10518/@HSplitContainer@10520/@Control@10521/@SubViewportContainer@10522/@SubViewport@10523/Main/Node2D")
+fabrik_data_chain_length = 10
+joint_data/0/bone_index = 0
+joint_data/0/bone2d_node = NodePath("Root")
+joint_data/1/bone_index = 1
+joint_data/1/bone2d_node = NodePath("Root/Bone_01")
+joint_data/1/magnet_position = Vector2(0, 0)
+joint_data/2/bone_index = 2
+joint_data/2/bone2d_node = NodePath("Root/Bone_01/Bone_02")
+joint_data/2/magnet_position = Vector2(0, 0)
+joint_data/3/bone_index = 3
+joint_data/3/bone2d_node = NodePath("Root/Bone_01/Bone_02/Bone_03")
+joint_data/3/magnet_position = Vector2(0, 0)
+joint_data/4/bone_index = 4
+joint_data/4/bone2d_node = NodePath("Root/Bone_01/Bone_02/Bone_03/Bone_04")
+joint_data/4/magnet_position = Vector2(0, 0)
+joint_data/5/bone_index = 5
+joint_data/5/bone2d_node = NodePath("Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05")
+joint_data/5/magnet_position = Vector2(0, 0)
+joint_data/6/bone_index = 6
+joint_data/6/bone2d_node = NodePath("Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06")
+joint_data/6/magnet_position = Vector2(0, 0)
+joint_data/7/bone_index = 7
+joint_data/7/bone2d_node = NodePath("Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07")
+joint_data/7/magnet_position = Vector2(0, 0)
+joint_data/8/bone_index = 8
+joint_data/8/bone2d_node = NodePath("Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08")
+joint_data/8/magnet_position = Vector2(0, 0)
+joint_data/9/bone_index = 9
+joint_data/9/bone2d_node = NodePath("Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09")
+joint_data/9/magnet_position = Vector2(0, 0)
+joint_data/9/use_target_rotation = false
 
-[sub_resource type="Resource" id="Resource_qgq1p"]
-resource_local_to_scene = true
-script = ExtResource("3_4klui")
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_1sa78"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DFABRIK_1sa78")
 
-[node name="Tentacle" type="Node2D" node_paths=PackedStringArray("vectorShape", "skeleton")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sa78"]
+size = Vector2(32, 224)
+
+[node name="Tentacle" type="Node2D"]
 script = ExtResource("1_an2iw")
-vectorShape = NodePath("Path")
-skeleton = NodePath("Skeleton2D")
 
-[node name="Path" type="Node2D" parent="." node_paths=PackedStringArray("line", "collision_object")]
-script = ExtResource("1_xcemu")
-stroke_width = 30.0
-line = NodePath("Stroke")
-collision_object = NodePath("StaticBody2D")
-curve = SubResource("Curve2D_qton5")
-update_curve_at_runtime = true
-arc_list = SubResource("Resource_qgq1p")
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-16, 16)
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+uv = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 0, 256, 0, 288, 0, 320, 0, 352, 0, 384, 0, 416, 0, 448, 0, 480, 32, 480, 32, 448, 32, 416, 32, 384, 32, 352, 32, 320, 32, 288, 32, 256, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+bones = ["Root", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Root/Bone_01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+script = ExtResource("5_4klui")
+height = 8
+width = 2
+grid_size = 32
 
-[node name="Stroke" type="Line2D" parent="Path"]
-points = PackedVector2Array(0, 0, 112.444336, 188.76025, 497.22437, 284.75354, 728.7377, 590.4802)
-width = 30.0
-sharp_limit = 90.0
-metadata/_edit_lock_ = true
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(-16, 272)
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+uv = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 0, 256, 0, 288, 0, 320, 0, 352, 0, 384, 0, 416, 0, 448, 0, 480, 32, 480, 32, 448, 32, 416, 32, 384, 32, 352, 32, 320, 32, 288, 32, 256, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+bones = ["Root", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Root/Bone_01/Bone_02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+script = ExtResource("5_4klui")
+height = 8
+width = 2
+grid_size = 32
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Path"]
-metadata/_edit_lock_ = true
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+position = Vector2(-16, 528)
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+uv = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 0, 256, 0, 288, 0, 320, 0, 352, 0, 384, 0, 416, 0, 448, 0, 480, 32, 480, 32, 448, 32, 416, 32, 384, 32, 352, 32, 320, 32, 288, 32, 256, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+bones = ["Root", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Root/Bone_01/Bone_02/Bone_03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+script = ExtResource("5_4klui")
+height = 8
+width = 2
+grid_size = 32
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Path/StaticBody2D"]
-polygon = PackedVector2Array(122.13487, 175.71806, 505.98862, 271.48026, 740.69586, 581.4248, 716.7795, 599.53564, 488.46014, 298.02682, 102.75381, 201.80244, -12.88678, 7.67665, 12.88678, -7.67665)
-metadata/_edit_lock_ = true
+[node name="Polygon2D4" type="Polygon2D" parent="."]
+position = Vector2(-16, 784)
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+uv = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 0, 256, 0, 288, 0, 320, 0, 352, 0, 384, 0, 416, 0, 448, 0, 480, 32, 480, 32, 448, 32, 416, 32, 384, 32, 352, 32, 320, 32, 288, 32, 256, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+bones = ["Root", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Root/Bone_01/Bone_02/Bone_03/Bone_04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+script = ExtResource("5_4klui")
+height = 8
+width = 2
+grid_size = 32
+
+[node name="Polygon2D5" type="Polygon2D" parent="."]
+position = Vector2(-16, 1040)
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+uv = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 0, 256, 0, 288, 0, 320, 0, 352, 0, 384, 0, 416, 0, 448, 0, 480, 32, 480, 32, 448, 32, 416, 32, 384, 32, 352, 32, 320, 32, 288, 32, 256, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+bones = ["Root", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+script = ExtResource("5_4klui")
+height = 8
+width = 2
+grid_size = 32
+
+[node name="Polygon2D6" type="Polygon2D" parent="."]
+position = Vector2(-16, 1296)
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+uv = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 0, 256, 0, 288, 0, 320, 0, 352, 0, 384, 0, 416, 0, 448, 0, 480, 32, 480, 32, 448, 32, 416, 32, 384, 32, 352, 32, 320, 32, 288, 32, 256, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+bones = ["Root", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+script = ExtResource("5_4klui")
+height = 8
+width = 2
+grid_size = 32
+
+[node name="Polygon2D7" type="Polygon2D" parent="."]
+position = Vector2(-16, 1552)
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+uv = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 0, 256, 0, 288, 0, 320, 0, 352, 0, 384, 0, 416, 0, 448, 0, 480, 32, 480, 32, 448, 32, 416, 32, 384, 32, 352, 32, 320, 32, 288, 32, 256, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+bones = ["Root", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+script = ExtResource("5_4klui")
+height = 8
+width = 2
+grid_size = 32
+
+[node name="Polygon2D8" type="Polygon2D" parent="."]
+position = Vector2(-16, 1808)
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+uv = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 0, 256, 0, 288, 0, 320, 0, 352, 0, 384, 0, 416, 0, 448, 0, 480, 32, 480, 32, 448, 32, 416, 32, 384, 32, 352, 32, 320, 32, 288, 32, 256, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+bones = ["Root", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+script = ExtResource("5_4klui")
+height = 8
+width = 2
+grid_size = 32
+
+[node name="Polygon2D9" type="Polygon2D" parent="."]
+position = Vector2(-16, 2064)
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+uv = PackedVector2Array(0, 0, 0, 32, 0, 64, 0, 96, 0, 128, 0, 160, 0, 192, 0, 224, 0, 256, 0, 288, 0, 320, 0, 352, 0, 384, 0, 416, 0, 448, 0, 480, 32, 480, 32, 448, 32, 416, 32, 384, 32, 352, 32, 320, 32, 288, 32, 256, 32, 224, 32, 192, 32, 160, 32, 128, 32, 96, 32, 64, 32, 32, 32, 0)
+bones = ["Root", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+script = ExtResource("5_4klui")
+height = 8
+width = 2
+grid_size = 32
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
+modification_stack = SubResource("SkeletonModificationStack2D_1sa78")
 
 [node name="Root" type="Bone2D" parent="Skeleton2D"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
+auto_calculate_length_and_angle = false
+length = 256.0
+bone_angle = 90.0
 
 [node name="Bone_01" type="Bone2D" parent="Skeleton2D/Root"]
-position = Vector2(0, 270)
-rest = Transform2D(1, 0, 0, 1, 0, 270)
+position = Vector2(0, 256)
+rest = Transform2D(1, 0, 0, 1, 0, 256)
 
 [node name="Bone_02" type="Bone2D" parent="Skeleton2D/Root/Bone_01"]
-position = Vector2(0, 270)
-rest = Transform2D(1, 0, 0, 1, 0, 270)
+position = Vector2(0, 256)
+rest = Transform2D(1, 0, 0, 1, 0, 256)
 
 [node name="Bone_03" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02"]
-position = Vector2(0, 270)
-rest = Transform2D(1, 0, 0, 1, 0, 270)
+position = Vector2(0, 256)
+rest = Transform2D(1, 0, 0, 1, 0, 256)
 
 [node name="Bone_04" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03"]
-position = Vector2(0, 270)
-rest = Transform2D(1, 0, 0, 1, 0, 270)
+position = Vector2(0, 256)
+rest = Transform2D(1, 0, 0, 1, 0, 256)
+
+[node name="Bone_05" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04"]
+position = Vector2(0, 256)
+rest = Transform2D(1, 0, 0, 1, 0, 256)
+
+[node name="Bone_06" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05"]
+position = Vector2(0, 255.99957)
+scale = Vector2(0.9999999, 0.9999999)
+rest = Transform2D(1, 0, 0, 1, 0, 256)
+
+[node name="Bone_07" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06"]
+position = Vector2(0, 255.99957)
+scale = Vector2(0.9999999, 0.9999999)
+rest = Transform2D(1, 0, 0, 1, 0, 256)
+
+[node name="Bone_08" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07"]
+position = Vector2(0, 255.99957)
+scale = Vector2(0.9999999, 0.9999999)
+rest = Transform2D(1, 0, 0, 1, 0, 256)
+
+[node name="Bone_09" type="Bone2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08"]
+position = Vector2(0, 256)
+scale = Vector2(0.9999999, 0.9999999)
+rest = Transform2D(1, 0, 0, 1, 0, 256)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09"]
+position = Vector2(0, -127.998535)
+scale = Vector2(1.0000005, 1.0000005)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/Bone_09/StaticBody2D"]
+shape = SubResource("RectangleShape2D_1sa78")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08"]
+position = Vector2(0, -127.998535)
+scale = Vector2(1.0000004, 1.0000004)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/Bone_08/StaticBody2D"]
+shape = SubResource("RectangleShape2D_1sa78")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07"]
+position = Vector2(0, -127.99902)
+scale = Vector2(1.0000002, 1.0000002)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/Bone_07/StaticBody2D"]
+shape = SubResource("RectangleShape2D_1sa78")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06"]
+position = Vector2(0, -127.99951)
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/Bone_06/StaticBody2D"]
+shape = SubResource("RectangleShape2D_1sa78")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05"]
+position = Vector2(0, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/Bone_05/StaticBody2D"]
+shape = SubResource("RectangleShape2D_1sa78")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04"]
+position = Vector2(0, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/Bone_04/StaticBody2D"]
+shape = SubResource("RectangleShape2D_1sa78")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03"]
+position = Vector2(0, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/Bone_02/Bone_03/StaticBody2D"]
+shape = SubResource("RectangleShape2D_1sa78")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root/Bone_01"]
+position = Vector2(0, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/Bone_01/StaticBody2D"]
+shape = SubResource("RectangleShape2D_1sa78")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Skeleton2D/Root"]
+position = Vector2(0, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton2D/Root/StaticBody2D"]
+shape = SubResource("RectangleShape2D_1sa78")
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2(0, 2454)
